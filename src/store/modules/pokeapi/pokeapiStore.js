@@ -58,7 +58,17 @@ const mutations = {
     state.pokemon = data
   },
   SET_favoritePokemons (state, data) {
-    state.favoritePokemons.push(data)
+    if (state.favoritePokemons.length === 0) {
+      state.favoritePokemons.push(data.data)
+    } else {
+      if (data.data.status) {
+        debugger
+        let newArray = state.favoritePokemons.filter((item) => data.data.name !== item.name)
+        state.favoritePokemons = newArray
+      } else {
+        state.favoritePokemons.push(data.data)
+      }
+    }
   }
 }
 export default {

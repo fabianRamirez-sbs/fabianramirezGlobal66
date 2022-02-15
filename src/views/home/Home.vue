@@ -1,6 +1,48 @@
 <template>
   <div>
-    Hola mundo
+    <v-card
+      class="mx-auto"
+      max-width="500"
+    >
+
+      <v-list two-line>
+        <v-list-item-group
+         v-model="selected"
+          multiple
+        >
+          <template v-for="(pokemon, index) in pokemons">
+            <v-list-item :key="pokemon.name">
+              <template v-slot:default="{ active }">
+                <v-list-item-content @click="setFavorites(pokemon , active)">
+                  <v-list-item-title v-text="pokemon.name"></v-list-item-title>
+                </v-list-item-content>
+
+                <v-list-item-action @click="setFavorites(pokemon , active)">
+                  <v-icon
+                    v-if="!active"
+                    color="grey lighten-1"
+                  >
+                   fa-solid fa-star
+                  </v-icon>
+
+                  <v-icon
+                    v-else
+                    color="yellow darken-3"
+                  >
+                     fa-solid fa-star
+                  </v-icon>
+                </v-list-item-action>
+              </template>
+            </v-list-item>
+
+            <v-divider
+              v-if="index < pokemons.length - 1"
+              :key="index"
+            ></v-divider>
+          </template>
+        </v-list-item-group>
+      </v-list>
+    </v-card>
   </div>
 </template>
 
@@ -12,6 +54,7 @@ export default {
 
   data () {
     return {
+      selected: []
     }
   },
 
@@ -20,7 +63,12 @@ export default {
   },
   components: {},
   methods: {
-    ...mapActions('PokeapiStore', ['GET_pokemons'])
+    ...mapActions('PokeapiStore', ['GET_pokemons', 'POST_ratings']),
+    setFavorites (item, status) {
+      let data = item
+      data.status = status
+      this.POST_ratings(item)
+    }
   },
   watch: {
 
