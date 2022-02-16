@@ -7,10 +7,12 @@ import vuetify from '@/plugins/vuetify'
 import 'es6-promise/auto'
 import VueSweetalert2 from 'vue-sweetalert2'
 import '@/assets/utils/filters'
+import VueClipboard from 'vue-clipboard2'
 
 import 'sweetalert2/dist/sweetalert2.min.css'
 
 Vue.use(VueSweetalert2)
+Vue.use(VueClipboard)
 
 /* eslint-disable no-new */
 new Vue({

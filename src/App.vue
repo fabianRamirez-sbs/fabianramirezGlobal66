@@ -19,6 +19,7 @@ export default {
 }
 </script>
 
+<style src='animate.css/animate.min.css'></style>
 <style>
 body, .backgroundColor, .v-application--wrap {
   background-color: #F5F5F5;

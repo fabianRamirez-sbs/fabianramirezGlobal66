@@ -6,6 +6,7 @@
           <v-col class="text-center">
             <div class="d-flex justify-center">
               <v-img
+                class="animate__animated animate__bounce animate__infinite infinite"
                 align="center"
                 lazy-src="informations.img"
                 max-width="250"

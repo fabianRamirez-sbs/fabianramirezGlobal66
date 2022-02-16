@@ -34,6 +34,7 @@
       </v-list>
     </v-card>
     <Footer />
+    <Loading />
   </div>
 </template>
 
@@ -41,6 +42,7 @@
 import { mapState, mapActions } from 'vuex'
 import AppBar from '@/components/globalComponents/AppBar'
 import Footer from '@/components/globalComponents/Footer'
+import Loading from '@/components/globalComponents/Loading'
 
 export default {
   name: 'Home',
@@ -60,7 +62,7 @@ export default {
       })
     }
   },
-  components: { AppBar, Footer },
+  components: { AppBar, Footer, Loading },
   methods: {
     ...mapActions('PokeapiStore', ['GET_pokemons', 'POST_ratings']),
     setFavorites (item, status) {

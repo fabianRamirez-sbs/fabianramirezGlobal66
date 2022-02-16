@@ -47,7 +47,11 @@
         </v-img>
 
         <v-card-title>Name: {{dialogData.name}}</v-card-title>
-
+        <input
+            type="text"
+            placeholder="Inserta tu URL de YouTube aquí ..."
+            v-model="copyData"
+        />
         <v-card-text>
           <div>
           <p>Weight: {{dialogData.weight}}</p>
@@ -59,7 +63,10 @@
         <v-divider class="mx-4"></v-divider>
 
         <v-card-actions>
-          <v-btn dark color="color3" elevation="2" rounded x-large>
+          <v-btn dark color="color3" elevation="2" rounded x-large
+            v-clipboard:copy="copyData"
+            v-clipboard:success="onCopy"
+            v-clipboard:error="onError">
             Share to my friends
           </v-btn>
         </v-card-actions>
@@ -67,6 +74,7 @@
     </v-dialog>
 
     <Footer />
+    <Loading />
   </div>
 </template>
 
@@ -75,12 +83,14 @@ import { mapState, mapActions } from 'vuex'
 import AppBar from '@/components/globalComponents/AppBar'
 import Footer from '@/components/globalComponents/Footer'
 import Image from '@/assets/images/background.svg'
+import Loading from '@/components/globalComponents/Loading'
 
 export default {
   name: 'Home',
 
   data () {
     return {
+      copyData: '',
       dialog: false,
       dialogData: {
         img: null,
@@ -103,7 +113,7 @@ export default {
       })
     }
   },
-  components: { AppBar, Footer },
+  components: { AppBar, Footer, Loading },
   methods: {
     ...mapActions('PokeapiStore', ['GET_pokemon']),
     dataItem (item) {
@@ -116,6 +126,13 @@ export default {
         this.dialogData.height = this.pokemon.data.height
         this.dialogData.types = this.pokemon.data.types
       })
+    },
+    onCopy: function (e) {
+      alert('You just copied the following text to the clipboard: ' + e.text)
+    },
+    onError: function (e) {
+      alert('Could not copy text to clipboard')
+      console.log(e)
     }
   },
   watch: {},
