@@ -1,10 +1,5 @@
-# pincel
-
-> A Vue.js project
-
 ## Build Setup
 
-``` bash
 # install dependencies
 npm install
 
@@ -16,13 +11,25 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
-```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# Tecnologías
+"vue": "^2.5.2",
+"vuex": "^3.6.2",
+"vue-router": "^3.0.1",
+"axios": "^0.21.1",
+"vuetify": "^2.4.5",
+
+# Descripción
+El manejo de la información a si como su obtención se realizó en un módulo (pokeapiStore.js) del store. Donde hay métodos como:
+
+    - GET_pokemons(): obtiene un arregló de elementos Pokemos.
+    - GET_pokemon(): obtienes la descripción de un Pokemon.
+    - POST_ratings(): inserta un nuevo Pokemon a un arreglo de favoritos.
 
 
-Conectar a servidor 
-ssh root@147.182.213.195
+La aplicación está segmentada por vistas y módulos generales.
+La aplicación está generada a partir del framework progresivo Vuetify. Las transiciones y animaciones están generadas en css.
 
-scp yea123.zip  root@147.182.213.195:/var/www/html
+Se implementaron características de SM6 + y validaciones de eslint.
+
 
