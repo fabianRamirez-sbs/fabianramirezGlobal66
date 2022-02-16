@@ -8,7 +8,6 @@ const actions = {
       restApi
         .get(url)
         .then(response => {
-          console.log(response)
           if (response.status === 200) {
             commit({
               type: 'SET_pokemons',
@@ -26,16 +25,19 @@ const actions = {
   },
 
   GET_pokemon ({ commit }, pokemonId) {
-    let url = `${process.env.ENDPOINT}/pokemon/${pokemonId}`
+    console.log(pokemonId)
+    let url = `${process.env.ENDPOINT}pokemon/${pokemonId.name}`
     return new Promise((resolve, reject) => {
       restApi
         .get(url)
         .then(response => {
-          commit({
-            type: 'SET_pokemon',
-            data: response
-          })
-          resolve()
+          if (response.status === 200) {
+            commit({
+              type: 'SET_pokemon',
+              data: response.data
+            })
+            resolve()
+          }
         })
         .catch(e => {
           reject(e)
@@ -62,8 +64,9 @@ const mutations = {
       state.favoritePokemons.push(data.data)
     } else {
       if (data.data.status) {
-        debugger
-        let newArray = state.favoritePokemons.filter((item) => data.data.name !== item.name)
+        let newArray = state.favoritePokemons.filter(
+          item => data.data.name !== item.name
+        )
         state.favoritePokemons = newArray
       } else {
         state.favoritePokemons.push(data.data)

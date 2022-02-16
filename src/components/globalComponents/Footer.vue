@@ -2,7 +2,7 @@
   <v-footer outlined app color="color9">
      <v-row justify="center">
       <v-col class="text-center" cols="6" sm="2">
-        <v-btn block dark color="color6" elevation="2" rounded x-large  router-link to="/">
+        <v-btn block dark color="color6" elevation="2" rounded x-large  router-link to="/list">
           <v-icon left class="mr-3">
             fa-solid fa-list
           </v-icon>

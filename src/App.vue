@@ -1,24 +1,16 @@
 <template>
-  <v-app>
-    <div class="">
-      <AppBar />
+  <v-app class="backgroundColor">
+    <div >
       <router-view></router-view>
-      <Footer />
     </div>
   </v-app>
 </template>
 
 <script>
-import AppBar from '@/components/globalComponents/AppBar'
-import Footer from '@/components/globalComponents/Footer'
-
 export default {
   name: 'App',
 
-  components: {
-    AppBar,
-    Footer
-  },
+  components: {},
 
   data: () => ({
   }),
@@ -28,4 +20,7 @@ export default {
 </script>
 
 <style>
+body, .backgroundColor, .v-application--wrap {
+  background-color: #F5F5F5;
+}
 </style>

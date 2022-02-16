@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '@/views/home/Home'
+import Welcome from '@/views/welcome/Welcome'
 import Favorites from '@/views/favorites/Favorites'
 
 Vue.use(Router)
@@ -12,6 +13,11 @@ let router = new Router({
 
     {
       path: '/',
+      name: 'welcome',
+      component: Welcome
+    },
+    {
+      path: '/list',
       name: 'home',
       component: Home
     },
